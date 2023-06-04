@@ -1,5 +1,5 @@
 # Agenda Eletronica
-Projeto desenvolvido para praticar lógica de programção com listas, proposto na faculdade de ADS na matéria de Software básico.
+Projeto desenvolvido para praticar lógica de programação com listas, proposto na faculdade de ADS na matéria de Software básico.
 
 ### Proposta do exercício:
 Criar uma agenda eletronica que armazene em lista o nome, telefone e em empresa dos contatos. Em seguida gerar o seguinte menu de opções:
