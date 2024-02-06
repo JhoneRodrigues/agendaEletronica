@@ -1,9 +1,17 @@
 import os
-os.system("cls")
+
+# retirei a chamada os.system('cls') e adicionei uma função 'clear' para o linux também
+def clear():
+    if os.name == 'nt':
+        return os.system('cls')
+    return os.system('clear')
+
+
 print("Agenda eletronica\n")
 contatos = []
 dados = []
 resp = 's'
+
 #Lendo e armazenando os dados de cada contato
 while resp == 's':
     dados.append(str(input("Insira o nome: ")))
@@ -14,16 +22,28 @@ while resp == 's':
     resp = input("Deseja adicionar outro contato (s/n)? ").lower()
     while resp != 's' and resp != 'n':
         resp = input("Resposta invalida, responda apenas com 's' ou 'n': ").lower()
-    os.system("cls")
+    clear()
+
 #Demonstrando e pedindo ao usuario a opcao a seguir
-print ("Menu de opções:")
-print("(1) Adicionar contato\t(2) Excluir contato\t(3) Listar todos os contatos")
-print("(4) Alterar contato\t(5) Listar dados de um determinado contato\t(6) Sair")
+menu_opcoes = {
+    1: "Adicionar contato",
+    2: "Excluir contato",
+    3: "Listar todos os contatos",
+    4: "Alterar contato",
+    5: "Listar dados de um determinado contato",
+    6: "Sair"
+}
+
+# dicionário que recebe as entradas, melhor manutenção futura
+print('Menu de opções: ')
+for key, value in menu_opcoes.items():
+    print(f' >> ({key}) {value}')
+
 while True:
     try:
         resp2 = int(input("Deseja realizar qual opção: "))
-        while resp2 not in [1,2,3,4,5,6]:
-            resp2 = int(input("Opção fora do intervalo de 1 a 6\nDigite novamente: "))
+        while resp2 not in menu_opcoes.keys():
+            resp2 = int(input("Essa opção não está no menu.\nDigite novamente: "))
         break
     except ValueError:
         print("Você não digitou um valor numérico, digite novamente.")
@@ -118,5 +138,5 @@ while resp2 in [1,2,3,4,5]:
                 continue
 #OPCAO 6 - Sair (Fim do programa)
 if resp2 == 6:
-    os.system("cls")
+    clear()
     print("Sua Lista foi finaliza.")
